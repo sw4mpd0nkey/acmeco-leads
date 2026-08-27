@@ -1,0 +1,17 @@
+server:
+  port: 8222
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: customer
+          uri: lb:http://CUSTOMER
+          predicates:
+            - Path=/api/v1/customer/**
+        - id: fraud
+          uri: lb:http://FRAUD
+          predicates:
+            - Path=/api/v1/fraud-check/**

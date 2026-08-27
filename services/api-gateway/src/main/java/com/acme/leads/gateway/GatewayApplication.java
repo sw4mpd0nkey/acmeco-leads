@@ -1,4 +1,4 @@
-package com.example.microservice.gateway;
+package com.acme.leads.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
