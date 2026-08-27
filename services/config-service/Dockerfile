@@ -17,7 +17,3 @@ COPY --from=build build/target/config-service-0.1.jar /app/config-service-0.1.ja
 
 # Step 5: Define the command to run your Spring Boot application
 CMD ["java", "-jar", "/app/config-service-0.1.jar"]
-
-# Default command to run Spring Boot application
-#STOPSIGNAL SIGTERM
-#ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar app.jar"]

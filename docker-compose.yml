@@ -1,0 +1,47 @@
+
+services:
+
+  backend-config-service:
+    build:
+      context: ./services/config-service
+      dockerfile: Dockerfile
+    ports:
+      - 8888:8888
+    healthcheck:
+      test: wget --spider --quiet 'http://localhost:8888/actuator/health/' || exit 1
+      interval: 25s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+    environment:
+      SPRING_PROFILES_ACTIVE: prod, native
+
+  backend-api-gateway:
+    build:
+      context: ./services/api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      backend-discovery-service:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+
+  backend-discovery-service:
+    build:
+      context: ./services/discovery-service
+      dockerfile: Dockerfile
+    ports:
+      - 8761:8761
+    healthcheck:
+      test: wget --spider --quiet 'http://localhost:8761/actuator/health/' || exit 1
+      interval: 25s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+    depends_on:
+      backend-config-service:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: prod 
