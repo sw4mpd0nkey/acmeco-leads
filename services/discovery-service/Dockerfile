@@ -5,7 +5,7 @@ COPY pom.xml /build/
 COPY src /build/src/
 
 WORKDIR /build/
-RUN mvn clean package -q -Dspring.profiles.active="prod"
+RUN mvn clean package
 
 
 FROM eclipse-temurin

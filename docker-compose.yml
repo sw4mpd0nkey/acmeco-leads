@@ -1,7 +1,7 @@
 
 services:
 
-  backend-config-service:
+  config-service:
     build:
       context: ./services/config-service
       dockerfile: Dockerfile
@@ -13,22 +13,18 @@ services:
       retries: 5
       start_period: 20s
       timeout: 10s
-    environment:
-      SPRING_PROFILES_ACTIVE: prod, native
 
-  backend-api-gateway:
+  api-gateway:
     build:
       context: ./services/api-gateway
       dockerfile: Dockerfile
     ports:
       - 8080:8080
     depends_on:
-      backend-discovery-service:
+      discovery-service:
         condition: service_healthy
-    environment:
-      SPRING_PROFILES_ACTIVE: prod
 
-  backend-discovery-service:
+  discovery-service:
     build:
       context: ./services/discovery-service
       dockerfile: Dockerfile
@@ -41,7 +37,5 @@ services:
       start_period: 20s
       timeout: 10s
     depends_on:
-      backend-config-service:
+      config-service:
         condition: service_healthy
-    environment:
-      SPRING_PROFILES_ACTIVE: prod 
