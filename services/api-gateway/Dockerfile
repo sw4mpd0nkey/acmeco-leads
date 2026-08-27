@@ -12,4 +12,4 @@ WORKDIR /app
 
 COPY --from=build /build/target/api-gateway-0.1.jar /app/
 
-ENTRYPOINT ["java", "-jar", "api-gateway-1.0.jar"]
+ENTRYPOINT ["java", "-jar", "api-gateway-0.1.jar"]

@@ -10,6 +10,6 @@ FROM amazoncorretto:17-alpine3.15
 
 WORKDIR /app
 
-COPY --from=build /build/target/config-service-0.1.jar /app/
+COPY --from=build /build/target/discovery-service-0.1.jar /app/
 
-ENTRYPOINT ["java", "-jar", "config-service-0.1.jar"]
+ENTRYPOINT ["java", "-jar", "discovery-service-0.1.jar"]
