@@ -1,0 +1,21 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.client.eureka-server-port}/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    eureka-server-port: 8761
+spring:
+  cloud:
+    config:
+      override-system-properties: false
+
+management:
+  #  zipkin:
+  #    tracing:
+  #      endpoint:
+  tracing:
+    sampling:
+      probability: 1.0
