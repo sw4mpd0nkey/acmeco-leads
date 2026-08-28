@@ -3,3 +3,7 @@ spring:
     import: optional:configserver:http://localhost:8888
   application:
     name: discovery-service
+eureka:
+  client:
+    fetchRegistry: false
+    register-with-eureka: false

@@ -13,16 +13,13 @@ services:
       retries: 5
       start_period: 20s
       timeout: 10s
-
+  
   api-gateway:
     build:
       context: ./services/api-gateway
       dockerfile: Dockerfile
     ports:
       - 8080:8080
-    depends_on:
-      discovery-service:
-        condition: service_healthy
 
   discovery-service:
     build:
@@ -36,6 +33,3 @@ services:
       retries: 5
       start_period: 20s
       timeout: 10s
-    depends_on:
-      config-service:
-        condition: service_healthy
