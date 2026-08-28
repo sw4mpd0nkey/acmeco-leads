@@ -15,4 +15,9 @@ WORKDIR /app
 
 COPY --from=build /build/target/api-gateway-0.1.jar /app/
 
+RUN apt-get update && apt-get install -y curl
+
+# Verify curl installation  
+RUN curl --version  
+
 ENTRYPOINT ["java", "-jar", "api-gateway-0.1.jar"]
