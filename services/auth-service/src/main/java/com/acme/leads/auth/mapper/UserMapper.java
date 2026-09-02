@@ -7,6 +7,7 @@ import java.util.List;
 import com.acme.leads.auth.dto.UserDTO;
 import com.acme.leads.auth.dto.UserDetailsDTO;
 import com.acme.leads.auth.model.User;
+import com.acme.leads.shared.mapper.BaseMapper;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper extends BaseMapper<User, UserDetailsDTO, Long> {

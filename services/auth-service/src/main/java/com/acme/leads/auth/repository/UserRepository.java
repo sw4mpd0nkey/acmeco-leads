@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.acme.leads.auth.model.User;
+import com.acme.leads.shared.repository.BaseRepository;
 
 @Repository
 public interface UserRepository extends BaseRepository<User, Long> {

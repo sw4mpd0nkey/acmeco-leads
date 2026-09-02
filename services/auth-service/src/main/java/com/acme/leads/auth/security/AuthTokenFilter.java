@@ -4,6 +4,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 
+import com.acme.leads.shared.security.AuthenticationTokenFilter;
+import com.acme.leads.shared.security.TokenUtils;
+
 @Component
 public class AuthTokenFilter extends AuthenticationTokenFilter {
     private final UserDetailsService userDetailsService;

@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.springframework.security.core.userdetails.UserDetails;
 
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Column;
@@ -17,6 +17,8 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.JoinColumn;
 
 import java.util.Set;
+
+import com.acme.leads.shared.model.BaseEntity;
 
 @Entity
 @NoArgsConstructor

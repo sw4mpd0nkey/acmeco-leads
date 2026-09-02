@@ -2,6 +2,8 @@ package com.acme.leads.auth.dto;
 
 import org.springframework.security.core.GrantedAuthority;
 
+import com.acme.leads.shared.dto.BaseDTO;
+
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

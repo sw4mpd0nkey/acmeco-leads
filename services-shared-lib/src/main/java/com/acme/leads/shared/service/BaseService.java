@@ -1,4 +1,4 @@
-package com.acme.leads.auth.service;
+package com.acme.leads.shared.service;
 
 import java.util.List;
 import java.util.Set;
@@ -7,12 +7,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.acme.leads.auth.dto.BaseDTO;
-import com.acme.leads.auth.mapper.BaseMapper;
-import com.acme.leads.auth.model.BaseEntity;
-import com.acme.leads.auth.repository.BaseRepository;
+import com.acme.leads.shared.dto.BaseDTO;
+import com.acme.leads.shared.exception.NotFoundException;
+import com.acme.leads.shared.mapper.BaseMapper;
+import com.acme.leads.shared.model.BaseEntity;
+import com.acme.leads.shared.repository.BaseRepository;
 
-import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

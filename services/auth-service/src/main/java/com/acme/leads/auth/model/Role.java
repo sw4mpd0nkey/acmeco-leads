@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+
 import org.springframework.security.core.GrantedAuthority;
 
 import jakarta.persistence.Entity;
@@ -13,6 +14,8 @@ import jakarta.persistence.ManyToMany;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.acme.leads.shared.model.BaseEntity;
 
 @Entity
 @NoArgsConstructor

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.acme.leads.auth.model.Role;
+import com.acme.leads.shared.repository.BaseRepository;
 
 @Repository
 public interface RoleRepository extends BaseRepository<Role, Long> {

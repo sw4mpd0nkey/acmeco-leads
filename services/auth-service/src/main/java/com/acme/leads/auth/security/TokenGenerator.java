@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.acme.leads.auth.model.User;
 import com.acme.leads.auth.repository.UserRepository;
+import com.acme.leads.shared.security.TokenUtils;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
