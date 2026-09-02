@@ -1,6 +1,5 @@
-package com.acme.leads.auth.dto;
+package com.acme.leads.shared.dto;
 
-import com.acme.leads.shared.dto.BaseDTO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.validation.constraints.NotBlank;

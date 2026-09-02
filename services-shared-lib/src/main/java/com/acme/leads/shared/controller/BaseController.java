@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.acme.leads.shared.dto.BaseDTO;
 import com.acme.leads.shared.model.BaseEntity;
 import com.acme.leads.shared.service.BaseService;
 
@@ -47,13 +48,13 @@ public abstract class BaseController<Model extends BaseEntity<ID>, DTO extends B
     @PostMapping
     public ResponseEntity<DTO> create(@Valid @RequestBody DTO DTO) {
         DTO.setId(null);
-        return new ResponseEntity<>(service.save(DTO), HttpStatus.CREATED);
+        return new ResponseEntity<DTO>(service.save(DTO), HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<DTO> update(@PathVariable ID id, @Valid @RequestBody DTO DTO) {
         DTO.setId(id);
-        return new ResponseEntity<>(service.save(DTO), HttpStatus.OK);
+        return new ResponseEntity<DTO>(service.save(DTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

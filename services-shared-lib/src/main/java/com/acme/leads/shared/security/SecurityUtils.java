@@ -10,8 +10,7 @@ public class SecurityUtils {
 
     public static String USER_ID_CLAIM = "userId";
     public static String ADMIN_ID_CLAIM = "adminId";
-    public static String TEACHER_ID_CLAIM = "teacherId";
-    public static String STUDENT_ID_CLAIM = "studentId";
+    public static String ROLE_ADMIN = "admin";
 
     public static String BEARER_PREFIX = "Bearer ";
 
@@ -30,14 +29,6 @@ public class SecurityUtils {
 
     public static Long getAdminId() {
         return getClaims().get(ADMIN_ID_CLAIM, Long.class);
-    }
-
-    public static Long getTeacherId() {
-        return getClaims().get(TEACHER_ID_CLAIM, Long.class);
-    }
-
-    public static Long getStudentId() {
-        return getClaims().get(STUDENT_ID_CLAIM, Long.class);
     }
 
     public static boolean hasAuthority(String authority) {

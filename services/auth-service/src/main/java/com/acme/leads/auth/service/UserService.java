@@ -13,12 +13,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.acme.leads.auth.dto.UserDTO;
-import com.acme.leads.auth.dto.UserDetailsDTO;
+import com.acme.leads.auth.dto.TokensDTO;
+import com.acme.leads.shared.dto.UserDTO;
+import com.acme.leads.shared.dto.UserDetailsDTO;
 import com.acme.leads.auth.mapper.UserMapper;
 import com.acme.leads.auth.model.User;
 import com.acme.leads.auth.repository.UserRepository;
 import com.acme.leads.auth.security.TokenGenerator;
+import static com.acme.leads.shared.security.SecurityUtils.BEARER_PREFIX;
+import static com.acme.leads.shared.security.SecurityUtils.ROLE_ADMIN;
+import static com.acme.leads.shared.security.SecurityUtils.getUsername;
+import static com.acme.leads.shared.security.SecurityUtils.hasAuthority;
+import com.acme.leads.shared.service.BaseService;
 
 import jakarta.ws.rs.ForbiddenException;
 import jakarta.ws.rs.NotFoundException;
