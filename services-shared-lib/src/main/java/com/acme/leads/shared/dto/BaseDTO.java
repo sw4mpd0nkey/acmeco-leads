@@ -1,4 +1,4 @@
-package com.acme.leads.auth.dto;
+package com.acme.leads.shared.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

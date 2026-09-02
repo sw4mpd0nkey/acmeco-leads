@@ -1,4 +1,4 @@
-package com.acme.leads.auth.repository;
+package com.acme.leads.shared.repository;
 
 import java.util.Set;
 
@@ -11,7 +11,8 @@ import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.acme.leads.auth.model.BaseEntity;
+import com.acme.leads.shared.model.BaseEntity;
+
 
 @NoRepositoryBean
 @Transactional

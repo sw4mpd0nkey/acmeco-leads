@@ -1,4 +1,4 @@
-package com.acme.leads.auth.security;
+package com.acme.leads.shared.security;
 
 
 import org.springframework.security.core.context.SecurityContextHolder;

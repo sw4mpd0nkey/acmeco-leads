@@ -1,4 +1,4 @@
-package com.acme.leads.auth.model;
+package com.acme.leads.shared.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

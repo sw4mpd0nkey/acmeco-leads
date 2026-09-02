@@ -1,5 +1,6 @@
-package com.acme.leads.auth.security;
+package com.acme.leads.shared.security;
 
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,8 +9,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.acme.leads.auth.client.AuthFeignClient;
-import static com.acme.leads.auth.security.SecurityUtils.BEARER_PREFIX;
+import com.acme.leads.shared.client.AuthFeignClient;
+import static com.acme.leads.shared.security.SecurityUtils.BEARER_PREFIX;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.io.IOException;
@@ -17,7 +18,6 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.ws.rs.core.HttpHeaders;
 import lombok.RequiredArgsConstructor;
 
 @Component
