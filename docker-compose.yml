@@ -42,3 +42,34 @@ services:
     depends_on:
       discovery-service:
         condition: service_healthy
+
+  auth-service:
+    build:
+      context: ./services/auth-service
+      dockerfile: Dockerfile
+    ports:
+      - 8081:8081
+    depends_on:
+      discovery-server:
+        condition: service_healthy
+      database-auth:
+        condition: service_healthy
+
+
+  database-auth:
+    image: mysql:8.0.30-debian
+    ports:
+      - 3307:3306
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost', '-u', 'root', '-p$$MYSQL_ROOT_PASSWORD']
+      interval: 25s
+      retries: 5
+      start_period: 20s
+      timeout: 10s
+    volumes:
+      - auth-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: acme-top-secret
+
+
