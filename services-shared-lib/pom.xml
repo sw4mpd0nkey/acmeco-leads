@@ -66,6 +66,14 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>repsy</id>
+            <name>My Private Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/sw4mpd0nkey/maven</url>
+        </repository>
+  </distributionManagement>
    
 
     <dependencyManagement>

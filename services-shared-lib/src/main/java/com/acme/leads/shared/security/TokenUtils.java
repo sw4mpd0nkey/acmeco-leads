@@ -11,6 +11,8 @@ import io.jsonwebtoken.Jwts;
 
 @Component
 public class TokenUtils {
+
+
     @Value("${token.secret}")
     private String secret;
 
