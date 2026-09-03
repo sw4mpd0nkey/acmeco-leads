@@ -9,12 +9,15 @@ import com.acme.leads.shared.security.TokenUtils;
 
 @Component
 public class AuthTokenFilter extends AuthenticationTokenFilter {
+
+    private final TokenUtils tokenUtils;
     private final UserDetailsService userDetailsService;
 
     public AuthTokenFilter(TokenUtils tokenUtils, UserDetailsService userDetailsService) {
-        // AuthFeignClient isn't need anymore because getUserDetails is overriden
+        
         super(null, tokenUtils);
         this.userDetailsService = userDetailsService;
+        this.tokenUtils = tokenUtils;
     }
 
     @Override

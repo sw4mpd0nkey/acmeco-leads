@@ -45,7 +45,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
 
@@ -84,7 +83,14 @@
         </dependencies>
     </dependencyManagement>
 
-     <build>
+    <repositories>
+        <repository>
+            <id>repsy</id>
+            <name>My Private Maven Repository on Repsy</name>
+            <url>https://repo.repsy.io/sw4mpd0nkey/maven</url>
+        </repository>
+    </repositories>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
