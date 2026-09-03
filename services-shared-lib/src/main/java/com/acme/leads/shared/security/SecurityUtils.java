@@ -11,7 +11,7 @@ public class SecurityUtils {
     public static String USER_ID_CLAIM = "userId";
     public static String ADMIN_ID_CLAIM = "adminId";
     public static String ROLE_ADMIN = "admin";
-
+    public static String ROLE_ROOT = "root";
     public static String BEARER_PREFIX = "Bearer ";
 
     public static String getUsername() {

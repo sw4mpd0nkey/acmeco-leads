@@ -8,16 +8,16 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 public class UserDetailsDTO extends BaseDTO<Long> implements UserDetails {
     @NotBlank(message = "Username is mandatory")
     private String username;
@@ -26,10 +26,18 @@ public class UserDetailsDTO extends BaseDTO<Long> implements UserDetails {
     @Size(min = 8, message = "Password must be at least 8 characters")
     private String password;
 
-    private final boolean accountNonExpired = true;
-    private final boolean accountNonLocked = true;
-    private final boolean credentialsNonExpired = true;
-    private final boolean enabled = true;
+
+    @Builder.Default
+    private boolean accountNonExpired = true;
+
+    @Builder.Default
+    private boolean accountNonLocked = true;
+    
+    @Builder.Default
+    private boolean credentialsNonExpired = true;
+    
+    @Builder.Default
+    private boolean enabled = true;
 
     @NotEmpty(message = "Authorities are mandatory")
     private Set<RoleDTO> authorities;
