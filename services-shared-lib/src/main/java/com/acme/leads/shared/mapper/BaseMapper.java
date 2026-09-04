@@ -7,6 +7,7 @@ import com.acme.leads.shared.model.BaseEntity;
 
 
 public interface BaseMapper<Model extends BaseEntity<ID>, DTO extends BaseDTO<ID>, ID> {
+
     DTO toDTO(Model model);
 
     Model toModel(DTO DTO);

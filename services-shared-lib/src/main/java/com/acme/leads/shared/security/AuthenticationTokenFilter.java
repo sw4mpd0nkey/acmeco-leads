@@ -10,7 +10,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.acme.leads.shared.client.AuthFeignClient;
-import static com.acme.leads.shared.security.SecurityUtils.BEARER_PREFIX;
+import static com.acme.leads.shared.util.SecurityUtils.BEARER_PREFIX;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.io.IOException;
@@ -24,18 +24,18 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthenticationTokenFilter extends OncePerRequestFilter {
     private final AuthFeignClient authFeignClient;
-    private final TokenUtils tokenUtils;
+    private final JwtHelper jwtHelper;
 
     @Override
     protected void doFilterInternal(
             HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException, java.io.IOException {
         String token = extractJwtFromRequest(request);
-        String username = tokenUtils.getUsername(token);
+        String username = jwtHelper.getUsername(token);
         if ((username != null && SecurityContextHolder.getContext().getAuthentication() == null)) {
             UserDetails userDetails = getUserDetails(username);
-            if (tokenUtils.validateToken(token, userDetails)) {
-                Claims claims = tokenUtils.getClaims(token);
+            if (jwtHelper.validateToken(token, userDetails)) {
+                Claims claims = jwtHelper.getClaims(token);
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(
                                 userDetails, claims, userDetails.getAuthorities());

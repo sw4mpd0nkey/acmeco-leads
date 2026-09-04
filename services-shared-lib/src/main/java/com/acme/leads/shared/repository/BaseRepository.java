@@ -18,6 +18,8 @@ import com.acme.leads.shared.model.BaseEntity;
 @Transactional
 public interface BaseRepository<Model extends BaseEntity<ID>, ID>
         extends CrudRepository<Model, ID> {
+
+
     @Override
     @Query("select x from #{#entityName} x where x.deleted = false")
     Iterable<Model> findAll();

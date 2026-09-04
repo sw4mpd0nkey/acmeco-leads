@@ -11,6 +11,8 @@ import com.acme.leads.shared.dto.UserDetailsDTO;
 
 @FeignClient(name = "auth-service", contextId = "authFeignClient")
 public interface AuthFeignClient {
+
+
     @GetMapping("/users/username/{username}")
     UserDetailsDTO getUser(@PathVariable String username);
 }
