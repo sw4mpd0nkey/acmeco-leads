@@ -11,6 +11,7 @@ import com.acme.leads.shared.mapper.BaseMapper;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper extends BaseMapper<User, UserDetailsDTO, Long> {
+
     UserDTO userToUserDTO(User user);
 
     User userDTOtoUser(UserDTO userDTO);
@@ -18,4 +19,5 @@ public interface UserMapper extends BaseMapper<User, UserDetailsDTO, Long> {
     List<UserDTO> userToUserDTOList(List<User> users);
 
     List<User> userDTOtoUserList(List<UserDTO> userDTOList);
+
 }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 import com.acme.leads.auth.model.User;
 import com.acme.leads.auth.repository.UserRepository;
-import com.acme.leads.shared.security.TokenUtils;
+import com.acme.leads.shared.security.JwtHelper;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -23,8 +23,9 @@ import lombok.RequiredArgsConstructor;
 @Component
 @RequiredArgsConstructor
 public class TokenGenerator {
+
     private final UserRepository userRepository;
-    private final TokenUtils tokenUtils;
+    private final JwtHelper jwtHelper;
 
     @Value("${token.secret}")
     private String secret;
@@ -36,7 +37,7 @@ public class TokenGenerator {
     private Long refreshExpiration;
 
     public String refreshAccessToken(String refreshToken) {
-        String username = tokenUtils.getUsername(refreshToken);
+        String username = jwtHelper.getUsername(refreshToken);
         if (username == null) {
             throw new AuthenticationException("Refresh token isn't valid!") {};
         }

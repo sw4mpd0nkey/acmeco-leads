@@ -3,6 +3,7 @@ package com.acme.leads.auth.controller;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,12 +25,8 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 @RestController
 @RequestMapping("/users")
 public class UserController extends BaseController<User, UserDetailsDTO, Long> {
-    private final UserService service;
-
-    public UserController(UserService service) {
-        super(service);
-        this.service = service;
-    }
+    
+    private @Autowired UserService service;
 
     @GetMapping("/{id}/public")
     public ResponseEntity<List<UserDTO>> getPublic(@PathVariable Set<Long> id) {

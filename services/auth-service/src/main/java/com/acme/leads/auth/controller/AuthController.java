@@ -1,5 +1,6 @@
 package com.acme.leads.auth.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final UserService userService;
+    private @Autowired UserService userService;
 
     @PostMapping("/login")
     public ResponseEntity<TokensDTO> login(@Valid @RequestBody UserDTO userDTO) {

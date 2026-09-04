@@ -3,6 +3,7 @@ package com.acme.leads.auth.service;
 import java.util.List;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -14,45 +15,31 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.acme.leads.auth.dto.TokensDTO;
-import com.acme.leads.shared.dto.UserDTO;
-import com.acme.leads.shared.dto.UserDetailsDTO;
 import com.acme.leads.auth.mapper.UserMapper;
 import com.acme.leads.auth.model.User;
 import com.acme.leads.auth.repository.UserRepository;
 import com.acme.leads.auth.security.TokenGenerator;
-import static com.acme.leads.shared.security.SecurityUtils.BEARER_PREFIX;
-import static com.acme.leads.shared.security.SecurityUtils.ROLE_ADMIN;
-import static com.acme.leads.shared.security.SecurityUtils.getUsername;
-import static com.acme.leads.shared.security.SecurityUtils.hasAuthority;
+import com.acme.leads.shared.dto.UserDTO;
+import com.acme.leads.shared.dto.UserDetailsDTO;
 import com.acme.leads.shared.service.BaseService;
+import static com.acme.leads.shared.util.SecurityUtils.BEARER_PREFIX;
+import static com.acme.leads.shared.util.SecurityUtils.ROLE_ADMIN;
+import static com.acme.leads.shared.util.SecurityUtils.getUsername;
+import static com.acme.leads.shared.util.SecurityUtils.hasAuthority;
 
 import jakarta.ws.rs.ForbiddenException;
 import jakarta.ws.rs.NotFoundException;
 
 @Service
 public class UserService extends BaseService<User, UserDetailsDTO, Long> {
-    private final UserRepository repository;
-    private final UserMapper mapper;
-    private final UserDetailsService userDetailsService;
-    private final TokenGenerator tokenGenerator;
-    private final AuthenticationManager authenticationManager;
-    private final PasswordEncoder passwordEncoder;
 
-    public UserService(
-            UserRepository repository,
-            UserMapper mapper,
-            UserDetailsService userDetailsService,
-            TokenGenerator tokenGenerator,
-            AuthenticationManager authenticationManager,
-            PasswordEncoder passwordEncoder) {
-        super(repository, mapper);
-        this.repository = repository;
-        this.mapper = mapper;
-        this.userDetailsService = userDetailsService;
-        this.tokenGenerator = tokenGenerator;
-        this.authenticationManager = authenticationManager;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private @Autowired UserRepository repository;
+    private @Autowired UserMapper mapper;
+    private @Autowired UserDetailsService userDetailsService;
+    private @Autowired TokenGenerator tokenGenerator;
+    private @Autowired AuthenticationManager authenticationManager;
+    private @Autowired PasswordEncoder passwordEncoder;
+
 
     @Override
     @Transactional

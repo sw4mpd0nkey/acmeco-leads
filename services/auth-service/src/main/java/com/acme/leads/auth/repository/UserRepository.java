@@ -12,6 +12,8 @@ import com.acme.leads.shared.repository.BaseRepository;
 
 @Repository
 public interface UserRepository extends BaseRepository<User, Long> {
+
+
     @Override
     @Query(
             "select x from #{#entityName} x where x.deleted = false "

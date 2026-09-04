@@ -17,6 +17,8 @@ import com.acme.leads.auth.security.AuthTokenFilter;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration)
             throws Exception {
